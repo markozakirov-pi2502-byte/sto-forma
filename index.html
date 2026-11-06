@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Запис на обслуговування автомобіля</title>
+    <style>
+        /* Базові стилі для охайного вигляду форми */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .form-container { max-width: 500px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .checkbox-group input { width: auto; }
+        button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Запис на техпідтримку авто</h2>
+    
+    <form action="SERVER_SCRIPT_URL" method="POST">
+        
+        <!-- Контактні дані клієнта -->
+        <div class="form-group">
+            <label for="client_name">Ваше ім'я:</label>
+            <input type="text" id="client_name" name="client_name" placeholder="Іван Іванов" required>
+        </div>
+
+        <div class="form-group">
+            <label for="client_phone">Номер телефону:</label>
+            <input type="tel" id="client_phone" name="client_phone" placeholder="+380XXXXXXXXX" required>
+        </div>
+
+        <!-- Інформація про автомобіль -->
+        <div class="form-group">
+            <label for="car_brand">Марка та модель авто:</label>
+            <input type="text" id="car_brand" name="car_brand" placeholder="Наприклад: Toyota Camry" required>
+        </div>
+
+        <div class="form-group">
+            <label for="car_year">Рік випуску:</label>
+            <select id="car_year" name="car_year" required>
+                <option value="">Оберіть рік...</option>
+                <!-- Спрощений список років -->
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="інший">Раніше 2021</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="car_mileage">Поточний пробіг (км):</label>
+            <input type="number" id="car_mileage" name="car_mileage" placeholder="Наприклад: 125000">
+        </div>
+
+        <!-- Вибір послуг -->
+        <div class="form-group">
+            <label>Які послуги потрібні?</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="service_oil" name="services[]" value="Заміна мастила">
+                <label for="service_oil">Заміна мастила та фільтрів</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="service_brakes" name="services[]" value="Діагностика гальм">
+                <label for="service_brakes">Обслуговування гальмівної системи</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="service_suspension" name="services[]" value="Ремонт ходової">
+                <label for="service_suspension">Діагностика/ремонт ходової</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="service_diagnostics" name="services[]" value="Комп'ютерна діагностика">
+                <label for="service_diagnostics">Комп'ютерна діагностика</label>
+            </div>
+        </div>
+
+        <!-- Дата та час -->
+        <div class="form-group">
+            <label for="visit_date">Бажана дата візиту:</label>
+            <input type="date" id="visit_date" name="visit_date" required>
+        </div>
+
+        <!-- Опис проблеми -->
+        <div class="form-group">
+            <label for="issue_description">Опишіть проблему або додаткові побажання:</label>
+            <textarea id="issue_description" name="issue_description" rows="4" placeholder="Наприклад: Стук у передній підвісці під час повороту праворуч..."></textarea>
+        </div>
+
+        <!-- Кнопка відправки -->
+        <button type="submit">Записатися на СТО</button>
+
+    </form>
+</div>
+
+</body>
+</html>
